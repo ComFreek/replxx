@@ -4,7 +4,50 @@
 #include <windows.h>
 #include <io.h>
 #if _MSC_VER < 1900
-#define snprintf _snprintf	// Microsoft headers use underscores in some names
+//#define snprintf _snprintf	// Microsoft headers use underscores in some names
+// Commented out, otherwise it would produce the following errors with GCC
+/*
+
+[ 52%] Building CXX object CMakeFiles/replxx.dir/extern/replxx/src/prompt.cxx.obj
+In file included from C:/msys64/mingw64/x86_64-w64-mingw32/include/locale.h:12,
+                 from C:/msys64/mingw64/include/c++/9.2.0/clocale:42,
+                 from C:/msys64/mingw64/include/c++/9.2.0/x86_64-w64-mingw32/bits/c++locale.h:41,
+                 from C:/msys64/mingw64/include/c++/9.2.0/bits/localefwd.h:40,
+                 from C:/msys64/mingw64/include/c++/9.2.0/string:43,
+                 from P:/curv/extern/replxx/src/ConvertUTF.h:97,
+                 from P:/curv/extern/replxx/src/conversion.hxx:4,
+                 from P:/curv/extern/replxx/src/utfstring.hxx:6,
+                 from P:/curv/extern/replxx/src/prompt.hxx:6,
+                 from P:/curv/extern/replxx/src/prompt.cxx:20:
+C:/msys64/mingw64/x86_64-w64-mingw32/include/stdio.h:780:23: error: conflicting declaration of 'int _snprintf(char*, size_t, const char*, ...)' with 'C' linkage
+  780 |   _CRTIMP int __cdecl _snprintf(char * __restrict__ _Dest,size_t _Count,const char * __restrict__ _Format,...) __MINGW_ATTRIB_DEPRECATED_SEC_WARN;
+      |                       ^~~~~~~~~
+P:/curv/extern/replxx/src/prompt.cxx:7:18: note: previous declaration with 'C++' linkage
+    7 | #define snprintf _snprintf // Microsoft headers use underscores in some names
+      |                  ^~~~~~~~~
+In file included from C:/msys64/mingw64/include/c++/9.2.0/ext/string_conversions.h:43,
+                 from C:/msys64/mingw64/include/c++/9.2.0/bits/basic_string.h:6493,
+                 from C:/msys64/mingw64/include/c++/9.2.0/string:55,
+                 from P:/curv/extern/replxx/src/ConvertUTF.h:97,
+                 from P:/curv/extern/replxx/src/conversion.hxx:4,
+                 from P:/curv/extern/replxx/src/utfstring.hxx:6,
+                 from P:/curv/extern/replxx/src/prompt.hxx:6,
+                 from P:/curv/extern/replxx/src/prompt.cxx:20:
+C:/msys64/mingw64/include/c++/9.2.0/cstdio:175:11: error: '::snprintf' has not been declared
+  175 |   using ::snprintf;
+      |           ^~~~~~~~
+C:/msys64/mingw64/include/c++/9.2.0/cstdio:185:22: error: '__gnu_cxx::snprintf' has not been declared
+  185 |   using ::__gnu_cxx::snprintf;
+      |                      ^~~~~~~~
+make[3]: *** [CMakeFiles/replxx.dir/build.make:141: CMakeFiles/replxx.dir/extern/replxx/src/prompt.cxx.obj] Fehler 1
+make[3]: Verzeichnis „/p/curv/release“ wird verlassen
+make[2]: *** [CMakeFiles/Makefile2:401: CMakeFiles/replxx.dir/all] Fehler 2
+make[2]: Verzeichnis „/p/curv/release“ wird verlassen
+make[1]: *** [Makefile:130: all] Fehler 2
+make[1]: Verzeichnis „/p/curv/release“ wird verlassen
+make: *** [Makefile:5: release] Fehler 2
+
+*/
 #endif
 #define strcasecmp _stricmp
 #define strdup _strdup
